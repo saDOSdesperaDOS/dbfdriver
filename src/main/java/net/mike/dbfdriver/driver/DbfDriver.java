@@ -15,11 +15,9 @@ public class DbfDriver {
     static File f =  new File("C:\\Users\\mike\\Desktop\\pricesAlexAuto\\AlexOffice\\MU.dbf");
 
 	 public void readDBF() throws IOException, ParseException {
-	        
 	        DbfRecord rec;
 	        try (DbfReader reader = new DbfReader(f)) {
 	            DbfMetadata meta = reader.getMetadata();
-
 	            System.out.println("Read DBF Metadata: " + meta);
 	            while ((rec = reader.read()) != null) {
 	                rec.setStringCharset(stringCharset);
