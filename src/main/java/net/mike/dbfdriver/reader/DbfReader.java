@@ -12,7 +12,7 @@ import net.mike.dbfdriver.util.IOUtils;
 public class DbfReader implements Closeable {
 
     private static final int HEADER_HALF_SIZE = 16;
-	private InputStream dbfInputStream;
+    private InputStream dbfInputStream;
     private MemoReader memoReader;
     private DbfMetadata metadata;
     private byte[] oneRecordBuffer;
