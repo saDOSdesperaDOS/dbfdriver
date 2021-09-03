@@ -18,11 +18,10 @@ import net.mike.dbfdriver.reader.DbfReader;
 public class DbfDriver implements java.sql.Driver {
 	DbfReader reader;
 	Charset stringCharset = Charset.forName("Cp866");
-    static File f =  new File("d:\\temp\\LM.dbf");
 
-    public DbfDriver() {
+    public DbfDriver(File dbFile) {
 		try {
-			reader = new DbfReader(f);
+			reader = new DbfReader(dbFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

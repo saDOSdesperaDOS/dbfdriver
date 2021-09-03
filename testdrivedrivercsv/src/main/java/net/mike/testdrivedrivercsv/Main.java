@@ -1,19 +1,18 @@
 package net.mike.testdrivedrivercsv;
 
 import net.mike.dbfdriver.driver.DbfDriver;
-import net.mike.dbfdriver.reader.DbfReader;
 
+import java.io.File;
 import java.io.IOException;
-import java.sql.Driver;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.Enumeration;
 
 public class Main {
+	static File dbFile =  new File("d:\\temp\\LM.dbf");
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		DbfDriver driver = new DbfDriver();
+
+		DbfDriver driver = new DbfDriver(dbFile);
 		try {
 			driver.readDBF();
 		} catch (IOException e) {
