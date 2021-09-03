@@ -16,19 +16,25 @@ import net.mike.dbfdriver.core.DbfRecord;
 import net.mike.dbfdriver.reader.DbfReader;
 
 public class DbfDriver implements java.sql.Driver {
-	
+	DbfReader reader;
 	Charset stringCharset = Charset.forName("Cp866");
-    static File f =  new File("C:\\Users\\mike\\Desktop\\pricesAlexAuto\\AlexOffice\\MU.dbf");
+    static File f =  new File("d:\\temp\\LM.dbf");
+
+    public DbfDriver() {
+		try {
+			reader = new DbfReader(f);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	 public void readDBF() throws IOException, ParseException {
-	        DbfRecord rec;
-	        try (DbfReader reader = new DbfReader(f)) {
 	            DbfMetadata meta = reader.getMetadata();
+				DbfRecord rec = reader.read();
 	            System.out.println("Read DBF Metadata: " + meta);
-	            while ((rec = reader.read()) != null) {
+	            while (rec != null) {
 	                rec.setStringCharset(stringCharset);
 	                System.out.println(rec.getRecordNumber() + ": " + rec.toMap());
-	            }
 	        }
 	    }
 
