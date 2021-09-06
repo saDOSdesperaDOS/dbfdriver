@@ -13,7 +13,7 @@ public class Main {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
-		DbfDriver driver = new DbfDriver(fdbFile);
+		DbfDriver driver = new DbfDriver(dbFile);
 		try {
 			driver.readDBF();
 		} catch (IOException e) {

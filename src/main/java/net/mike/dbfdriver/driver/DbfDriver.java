@@ -29,9 +29,9 @@ public class DbfDriver implements java.sql.Driver {
 
 	 public void readDBF() throws IOException, ParseException {
 	            DbfMetadata meta = reader.getMetadata();
-				DbfRecord rec = reader.read();
+				DbfRecord rec = null;
 	            System.out.println("Read DBF Metadata: " + meta);
-	            while (rec != null) {
+	            while ((rec = reader.read()) != null) {
 	                rec.setStringCharset(stringCharset);
 	                System.out.println(rec.getRecordNumber() + ": " + rec.toMap());
 	        }
