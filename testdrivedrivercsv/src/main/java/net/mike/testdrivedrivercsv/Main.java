@@ -14,10 +14,10 @@ public class Main {
 	public static void main(String[] args) throws IOException, ParseException {
 
 		DbfDriver driver = new DbfDriver(dbFile);
-		Map<Integer, Map> map = driver.getDataDBF();
+		Map<Integer, Map<String, Object>> map = driver.getDataDBF();
 
-		for (int i = 0; i < map.size() ; i++) {
-			System.out.println(map.get(i));
+		for (int i = 1; i < map.size() ; i++) {
+			System.out.println(map.get(i).get("NAME"));
 		}
 
 	}

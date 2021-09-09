@@ -30,7 +30,7 @@ public class DbfDriver implements java.sql.Driver {
 	 public Map<Integer, Map<String, Object>> getDataDBF() throws IOException, ParseException {
 		 DbfMetadata meta = reader.getMetadata();
 		 DbfRecord rec;
-		 Map<Integer, Map<String, Object>> data = new HashMap<>();
+		 Map<Integer, Map<String, Object>> data = new LinkedHashMap<>();
 		 System.out.println("Read DBF Metadata: " + meta);
 		 while ((rec = reader.read()) != null) {
 			 rec.setStringCharset(stringCharset);
