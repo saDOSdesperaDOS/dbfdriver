@@ -8,7 +8,7 @@ import java.sql.DriverPropertyInfo;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.text.ParseException;
-import java.util.Properties;
+import java.util.*;
 import java.util.logging.Logger;
 
 import net.mike.dbfdriver.core.DbfMetadata;
@@ -27,15 +27,18 @@ public class DbfDriver implements java.sql.Driver {
 		}
 	}
 
-	 public void readDBF() throws IOException, ParseException {
-	            DbfMetadata meta = reader.getMetadata();
-				DbfRecord rec = null;
-	            System.out.println("Read DBF Metadata: " + meta);
-	            while ((rec = reader.read()) != null) {
-	                rec.setStringCharset(stringCharset);
-	                System.out.println(rec.getRecordNumber() + ": " + rec.toMap());
-	        }
-	    }
+	 public Map<Integer, Map<String, Object>> getDataDBF() throws IOException, ParseException {
+		 DbfMetadata meta = reader.getMetadata();
+		 DbfRecord rec;
+		 Map<Integer, Map<String, Object>> data = new HashMap<>();
+		 System.out.println("Read DBF Metadata: " + meta);
+		 while ((rec = reader.read()) != null) {
+			 rec.setStringCharset(stringCharset);
+			 data.put(rec.getRecordNumber(), rec.toMap());
+		 }
+		 return data;
+     }
+
 
 	@Override
 	public boolean acceptsURL(String arg0) throws SQLException {

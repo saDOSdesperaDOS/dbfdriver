@@ -284,7 +284,7 @@ public class DbfRecord {
         Map<String, Object> map = new LinkedHashMap<String, Object>(getFields().size() * 2);
 
         for (DbfField f : getFields()) {
-            String name = f.getName();
+            String name = f.getName();//название столбца(колонки таблицы)
 
             switch (f.getType()) {
 
